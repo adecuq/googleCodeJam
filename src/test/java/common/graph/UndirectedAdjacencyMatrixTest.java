@@ -48,4 +48,14 @@ public class UndirectedAdjacencyMatrixTest {
 
       Assertions.assertThat(matrix.matrix[1][2] == 1).isTrue();
    }
+
+   @Test
+   public void
+   it_should_return_the_adjacent_vertex() {
+      UndirectedAdjacencyMatrix matrix = new UndirectedAdjacencyMatrix();
+
+      Helper.populateGraph(inputStream, matrix);
+
+      Assertions.assertThat(matrix.adj(1).iterator().next()).isEqualTo(2);
+   }
 }

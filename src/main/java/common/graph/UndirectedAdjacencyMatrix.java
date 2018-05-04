@@ -1,5 +1,7 @@
 package common.graph;
 
+import java.util.ArrayList;
+
 public class UndirectedAdjacencyMatrix implements Graph {
 
    public int[][] matrix;
@@ -31,5 +33,15 @@ public class UndirectedAdjacencyMatrix implements Graph {
    public void addEdge(int v, int w) {
       matrix[v][w] = 1;
       matrix[w][v] = 1;
+   }
+
+   public Iterable<Integer> adj(int v) {
+      ArrayList<Integer> res = new ArrayList<Integer>();
+      for(int i=0;i<=V();i++) {
+         if(matrix[v][i] == 1) {
+            res.add(i);
+         }
+      }
+      return res;
    }
 }
