@@ -1,21 +1,26 @@
 package common.graph;
 
+import java.util.PriorityQueue;
+
 public interface Graph {
+
+   /*** Setter ***/
 
    void resize(int v);
 
-   /* Number of vertices */
+   void addEdge(int x, int y, int weight);
+
+   /*** Getter ***/
+
+   /* number of vertices */
    int V();
 
-   /* Number of edges */
+   /* number of edges */
    int E();
 
-   /* Add edge v-w to this graph */
-   void addEdge(int v, int w);
-
-   /* vertices adjacent to v  */
    Iterable<Integer> adj(int v);
 
-   /* String representation */
+   PriorityQueue<Edge> edges();
+
    String toString();
 }

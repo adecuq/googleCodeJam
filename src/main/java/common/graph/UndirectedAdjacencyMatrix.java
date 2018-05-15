@@ -1,18 +1,24 @@
 package common.graph;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class UndirectedAdjacencyMatrix implements Graph {
 
    public int[][] matrix;
 
-   UndirectedAdjacencyMatrix() {
+   public UndirectedAdjacencyMatrix() {
       matrix = new int[0][0];
    }
 
    public void resize(int v) {
       v = v + 1; //to avoid conflict in start indices (0 or 1)
       matrix = new int[v][v];
+   }
+
+   public void addEdge(int x, int y, int weight) {
+      matrix[x][y] = weight;
+      matrix[y][x] = weight;
    }
 
    public int V() {
@@ -23,25 +29,35 @@ public class UndirectedAdjacencyMatrix implements Graph {
       int cnt = 0;
       for(int i=0;i<=V();i++) {
          for(int j=0;j<=V();j++) {
-            if(matrix[i][j]==1)
+            if(matrix[i][j]>=1)
                cnt++;
          }
       }
       return cnt/2;
    }
 
-   public void addEdge(int v, int w) {
-      matrix[v][w] = 1;
-      matrix[w][v] = 1;
-   }
-
    public Iterable<Integer> adj(int v) {
       ArrayList<Integer> res = new ArrayList<Integer>();
       for(int i=0;i<=V();i++) {
-         if(matrix[v][i] == 1) {
+         if(matrix[v][i] >= 1) {
             res.add(i);
          }
       }
       return res;
+   }
+
+   public PriorityQueue<Edge> edges() {
+      PriorityQueue<Edge> edges = new PriorityQueue<Edge>();
+      for(int i=0;i<=V();i++) {
+         for(int j = 0; j <= V(); j++) {
+            if(matrix[i][j] >= 1) {
+               Edge e = new Edge(i, j, matrix[i][j]);
+               if(!edges.contains(e)) {
+                  edges.add(e);
+               }
+            }
+         }
+      }
+      return edges;
    }
 }

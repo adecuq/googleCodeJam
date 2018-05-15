@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.PriorityQueue;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -58,4 +59,17 @@ public class UndirectedAdjacencyMatrixTest {
 
       Assertions.assertThat(matrix.adj(1).iterator().next()).isEqualTo(2);
    }
+
+   @Test
+   public void
+   it_should_return_exactly_its_edges() {
+      UndirectedAdjacencyMatrix matrix = new UndirectedAdjacencyMatrix();
+
+      Helper.populateGraph(inputStream, matrix);
+
+      PriorityQueue<Edge> edges = matrix.edges();
+
+      Assertions.assertThat(edges).containsExactly(new Edge(1,2,1), new Edge(1,3,1));
+   }
+
 }
