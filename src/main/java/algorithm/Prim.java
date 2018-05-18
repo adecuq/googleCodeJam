@@ -16,15 +16,21 @@ public class Prim implements MinimumSpanningTree {
       marked = new boolean[g.V() + 1];
       List<Edge> mst = new LinkedList<Edge>();
 
-      visit(g,1);
+      visit(g, 1);
 
-      while (!edges.isEmpty() && mst.size() < g.V()-1) {
+      while (!edges.isEmpty() && mst.size() < g.V() - 1) {
          Edge e = edges.poll();
-         if (marked[e.first()] && marked[e.second()]) continue;
+         if (marked[e.first()] && marked[e.second()]) {
+            continue;
+         }
 
          mst.add(e);
-         if(!marked[e.first()]) visit(g,e.first());
-         if(!marked[e.second()]) visit(g,e.second());
+         if (!marked[e.first()]) {
+            visit(g, e.first());
+         }
+         if (!marked[e.second()]) {
+            visit(g, e.second());
+         }
       }
 
       return mst;
@@ -32,9 +38,10 @@ public class Prim implements MinimumSpanningTree {
 
    private void visit(Graph g, int v) {
       marked[v] = true;
-      for(Edge e : g.adj(v)) {
-         if(!marked[e.other(v)])
+      for (Edge e : g.adj(v)) {
+         if (!marked[e.other(v)]) {
             edges.add(e);
+         }
       }
    }
 }
