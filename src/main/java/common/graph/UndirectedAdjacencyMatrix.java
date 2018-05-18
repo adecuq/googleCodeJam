@@ -36,11 +36,12 @@ public class UndirectedAdjacencyMatrix implements Graph {
       return cnt/2;
    }
 
-   public Iterable<Integer> adj(int v) {
-      ArrayList<Integer> res = new ArrayList<Integer>();
+   public Iterable<Edge> adj(int v) {
+      ArrayList<Edge> res = new ArrayList<Edge>();
       for(int i=0;i<=V();i++) {
          if(matrix[v][i] >= 1) {
-            res.add(i);
+            Edge e = new Edge(v, i, matrix[v][i]);
+            res.add(e);
          }
       }
       return res;

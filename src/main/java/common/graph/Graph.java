@@ -18,7 +18,7 @@ public interface Graph {
    /* number of edges */
    int E();
 
-   Iterable<Integer> adj(int v);
+   Iterable<Edge> adj(int v);
 
    PriorityQueue<Edge> edges();
 

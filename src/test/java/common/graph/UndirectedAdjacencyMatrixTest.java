@@ -57,7 +57,7 @@ public class UndirectedAdjacencyMatrixTest {
 
       Helper.populateGraph(inputStream, matrix);
 
-      Assertions.assertThat(matrix.adj(1).iterator().next()).isEqualTo(2);
+      Assertions.assertThat(matrix.adj(1).iterator().next()).isEqualTo(new Edge(1,2,1));
    }
 
    @Test

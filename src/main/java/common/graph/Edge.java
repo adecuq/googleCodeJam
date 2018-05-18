@@ -1,32 +1,36 @@
 package common.graph;
 
 public class Edge implements Comparable<Edge> {
-   private int vertex1;
-   private int vertex2;
+   private int first;
+   private int second;
    private int weight;
 
-   public Edge(int vertex1, int vertex2) {
-      this.vertex1 = vertex1;
-      this.vertex2 = vertex2;
+   public Edge(int v1, int v2) {
+      this.first = v1;
+      this.second = v2;
       this.weight = 1;
    }
 
    Edge(int vertex1, int vertex2, int weigth) {
-      this.vertex1 = vertex1;
-      this.vertex2 = vertex2;
+      this.first = vertex1;
+      this.second = vertex2;
       this.weight = weigth;
    }
 
    public int first() {
-      return vertex1;
+      return first;
    }
 
    public int second() {
-      return vertex2;
+      return second;
    }
 
    public int weight() {
       return weight;
+   }
+
+   public int other(int v) {
+      return v == first? second : first;
    }
 
    public int compareTo(Edge o) {
