@@ -5,16 +5,10 @@ public class Edge implements Comparable<Edge> {
    private int second;
    private int weight;
 
-   public Edge(int v1, int v2) {
+   Edge(int v1, int v2, int weight) {
       this.first = v1;
       this.second = v2;
-      this.weight = 1;
-   }
-
-   Edge(int vertex1, int vertex2, int weigth) {
-      this.first = vertex1;
-      this.second = vertex2;
-      this.weight = weigth;
+      this.weight = weight;
    }
 
    public int first() {
