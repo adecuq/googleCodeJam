@@ -24,7 +24,7 @@ public class Edge implements Comparable<Edge> {
    }
 
    public int other(int v) {
-      return v == first? second : first;
+      return v == first ? second : first;
    }
 
    public int compareTo(Edge o) {
@@ -36,11 +36,15 @@ public class Edge implements Comparable<Edge> {
 
    @Override
    public boolean equals(Object other) {
-      if (other == null) return false;
+      if (other == null) {
+         return false;
+      }
 
-      if(!(other instanceof Edge)) return false;
+      if (!(other instanceof Edge)) {
+         return false;
+      }
 
-      Edge o = (Edge)other;
+      Edge o = (Edge) other;
 
       return (o.first() == first() && o.second() == second())
             || (o.first() == second() && o.second() == first())

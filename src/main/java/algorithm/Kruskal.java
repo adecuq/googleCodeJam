@@ -21,15 +21,14 @@ public class Kruskal implements MinimumSpanningTree {
          int x = UN.find(e.first());
          int y = UN.find(e.second());
 
-         if(!UN.isConnected(x, y)) {
-            UN.union(x,y);
+         if (!UN.isConnected(x, y)) {
+            UN.union(x, y);
             mst.add(e);
          }
       }
 
       return mst;
    }
-
 
    private class UnionFind {
       List<TreeSet<Integer>> subsets;
@@ -46,13 +45,13 @@ public class Kruskal implements MinimumSpanningTree {
 
       int find(int v) {
          int cnt = 0;
-         for(TreeSet<Integer> s : subsets) {
-            if(s.contains(v)) {
+         for (TreeSet<Integer> s : subsets) {
+            if (s.contains(v)) {
                return cnt;
             }
             cnt++;
          }
-        throw new RuntimeException("Error in find algorithm");
+         throw new RuntimeException("Error in find algorithm");
       }
 
       void union(int x, int y) {
@@ -60,10 +59,8 @@ public class Kruskal implements MinimumSpanningTree {
          subsets.remove(y);
       }
 
-
       boolean isConnected(int x, int y) {
          return x == y;
       }
    }
-
 }

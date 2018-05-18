@@ -27,19 +27,20 @@ public class UndirectedAdjacencyMatrix implements Graph {
 
    public int E() {
       int cnt = 0;
-      for(int i=0;i<=V();i++) {
-         for(int j=0;j<=V();j++) {
-            if(matrix[i][j]>=1)
+      for (int i = 0; i <= V(); i++) {
+         for (int j = 0; j <= V(); j++) {
+            if (matrix[i][j] >= 1) {
                cnt++;
+            }
          }
       }
-      return cnt/2;
+      return cnt / 2;
    }
 
    public Iterable<Edge> adj(int v) {
       ArrayList<Edge> res = new ArrayList<Edge>();
-      for(int i=0;i<=V();i++) {
-         if(matrix[v][i] >= 1) {
+      for (int i = 0; i <= V(); i++) {
+         if (matrix[v][i] >= 1) {
             Edge e = new Edge(v, i, matrix[v][i]);
             res.add(e);
          }
@@ -49,11 +50,11 @@ public class UndirectedAdjacencyMatrix implements Graph {
 
    public PriorityQueue<Edge> edges() {
       PriorityQueue<Edge> edges = new PriorityQueue<Edge>();
-      for(int i=0;i<=V();i++) {
-         for(int j = 0; j <= V(); j++) {
-            if(matrix[i][j] >= 1) {
+      for (int i = 0; i <= V(); i++) {
+         for (int j = 0; j <= V(); j++) {
+            if (matrix[i][j] >= 1) {
                Edge e = new Edge(i, j, matrix[i][j]);
-               if(!edges.contains(e)) {
+               if (!edges.contains(e)) {
                   edges.add(e);
                }
             }
