@@ -18,7 +18,7 @@ public class Prim implements MinimumSpanningTree {
 
       visit(g,1);
 
-      while (!edges.isEmpty()) {
+      while (!edges.isEmpty() && mst.size() < g.V()-1) {
          Edge e = edges.poll();
          if (marked[e.first()] && marked[e.second()]) continue;
 
