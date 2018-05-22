@@ -20,7 +20,7 @@ public class Prim implements MinimumSpanningTree {
 
       while (!edges.isEmpty() && mst.size() < g.V() - 1) {
          Edge e = edges.poll();
-         if (marked[e.first()] && marked[e.second()]) {
+         if (areConnected(e.first(),e.second())) {
             continue;
          }
 
@@ -34,6 +34,10 @@ public class Prim implements MinimumSpanningTree {
       }
 
       return mst;
+   }
+
+   private boolean areConnected(int x, int y) {
+      return marked[x] && marked[y];
    }
 
    private void visit(Graph g, int v) {
